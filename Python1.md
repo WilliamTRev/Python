@@ -1017,3 +1017,26 @@ Postman is the tool we will use to test/mock our HTTP requests to our web servic
     - collections are routes that are grouped together by project
 - Requests
     - these are your HTTP requests. You need to include the relevent URL (including path and query params) and the necessary body (if required)
+
+## SQLite DB connection
+```python
+import sqlite3
+import pandas as pd
+
+conn=sqlite3.connect('students.db')
+
+c=conn.cursor()
+
+c.execute("""CREATE TABLE students (name TEXT, age INTEGER)""")
+
+c.execute("""INSERT INTO students VALUES ('Mark',17)""")
+
+c.execute("""SELECT * FROM students""")
+
+rows = c.fetchall()
+
+for row in rows:
+    print(row)
+
+conn.commit()
+```
